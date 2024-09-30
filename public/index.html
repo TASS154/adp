@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Site modificação</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <img class="logoImagem" src="https://st4.depositphotos.com/5161043/38865/v/450/depositphotos_388654198-stock-illustration-wing-bird-gold-falcon-logo.jpg" alt="">
+            <ul class="nav-links">
+                <li><a href="#home">Inicio</a></li>
+                <li><a href="#about">Sobre</a></li>
+                <li><a href="#services">Serviços</a></li>
+                <li><a href="#contact">Contato</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section id="home" class="hero-section">
+        <div class="hero-content">
+            <h1>Welcome to the Future of Web Design</h1>
+            <p>Modern, sleek, and interactive user experience.</p>
+            <a href="#about" class="btn">Learn More</a>
+        </div>
+    </section>
+
+    <section id="about" class="about-section">
+        <h2>About Us</h2>
+        <p>Aqui, a diversão é parte do trabalho – e o trabalho é parte da diversão! Somos um time de criativos que adora transformar ideias malucas em soluções incríveis, sempre com um sorriso no rosto. Se você quer um parceiro que leve o trabalho a sério, mas nunca a si mesmo, chegou ao lugar certo. Vamos fazer coisas fantásticas juntos e ainda nos divertir no caminho! 🚀</p>
+    </section>
+
+    <section id="services" class="services-section">
+        <h2>Nosso Serviços</h2>
+        <div class="service-card">
+            <h3>Web Design</h3>
+            <p>Criação de web designs visualmente atraentes e responsivos.</p>
+        </div>
+        <div class="service-card">
+            <h3>SEO Optimization</h3>
+            <p>Garantir que seu site tenha uma classificação alta nos mecanismos de busca.</p>
+        </div>
+        <div class="service-card">
+            <h3>Marketing Strategy</h3>
+            <p>Ajudando você a atingir seu público-alvo de forma eficaz.</p>
+        </div>
+        <div class="service-card">
+            <h3>Manutenção de sites</h3>
+            <p>Por que sempre há algo para consertar.</p>
+        </div>
+        <div class="service-card">
+            <h3>Suporte T.I</h3>
+            <p>Para ajudar quando você esquecer sua senha... denovo.</p>
+        </div>
+        <div class="service-card">
+            <h3>Montagem de PCs</h3>
+            <p>Para quem quer a máquina dos sonhos (e não confia em qualquer loja).</p>
+        </div>
+    </section>
+
+    <section class="lista">
+        <h2>O que você quer fazer?</h2>
+        <div id="checkboxes"></div>
+        <button onclick="recomendarServicos()" class="butaum">Recomendar Serviços</button>
+        <div id="servicos-recomendados"></div>
+    </section>
+
+    <a class="fixo" href="">
+        <img class="whatsapp" src="https://as2.ftcdn.net/v2/jpg/03/16/74/65/1000_F_316746510_yotsjNGcv7fzmrmTkApIinQaR0TfpBzd.jpg" alt="">
+    </a>
+
+    <footer>
+        <p>&copy; 2024 Innovative Site. All rights reserved.</p>
+        <p>Telefone: (11) 930388058</p>
+        <p>Email: nãoseioquecolocar@gmail.com</p>
+        <p>Rua do dev, 1 - exit code</p>
+    </footer>
+
+    <script>
+        let servicos = [];
+
+
+function carregarServicos() {
+    fetch('/servicos')
+        .then(response => response.json())
+        .then(data => {
+            servicos = data;
+            mostrarCheckboxes(); 
+        })
+        .catch(error => console.error('erro ao carregar os serviços:', error));
+}
+
+
+function mostrarCheckboxes() {
+    const checkboxContainer = document.getElementById('checkboxes');
+    checkboxContainer.innerHTML = '';
+
+    servicos.forEach(servico => {
+        const checkbox = document.createElement('input');
+        checkbox.type = 'checkbox';
+        checkbox.value = servico.nome;
+        checkbox.id = servico.nome;
+
+        const label = document.createElement('label');
+        label.htmlFor = servico.nome;
+        label.appendChild(document.createTextNode(servico.nome));
+
+        checkboxContainer.appendChild(checkbox);
+        checkboxContainer.appendChild(label);
+        checkboxContainer.appendChild(document.createElement('br'));
+    });
+}
+
+
+function recomendarServicos() {
+    const servicosSelecionados = Array.from(document.querySelectorAll('#checkboxes input:checked')).map(el => el.value);
+    const servicosRecomendados = document.getElementById('servicos-recomendados');
+    servicosRecomendados.innerHTML = ''; 
+
+    const recomendacoes = servicos.filter(servico => servicosSelecionados.includes(servico.nome));
+
+    
+    if (recomendacoes.length > 0) {
+        const descricoes = recomendacoes.map(recommend => `Recomendamos: ${recommend.servicos.join(', ')}.`);
+        servicosRecomendados.textContent = descricoes.join(' | ');
+    } else {
+        servicosRecomendados.textContent = 'Nenhum serviço encontrado para as opções selecionadas.';
+    }
+}
+
+
+carregarServicos();
+    </script>
+</body>
+</html>

@@ -1,0 +1,58 @@
+[
+  {
+    "nome": "Criar um site",
+    "descricao": "Desenvolver um site moderno e responsivo.",
+    "servicos": [
+      "Web Design",
+      "SEO Optimization",
+      "Marketing Strategy"
+    ]
+  },
+  {
+    "nome": "Melhorar a presença online",
+    "descricao": "Aumentar a visibilidade do seu negócio na internet.",
+    "servicos": [
+      "SEO Optimization",
+      "Marketing Strategy"
+    ]
+  },
+  {
+    "nome": "Resolver problemas técnicos",
+    "descricao": "Ajudar com questões de TI e manutenção.",
+    "servicos": [
+      "Manutenção de sites",
+      "Suporte T.I"
+    ]
+  },
+  {
+    "nome": "Montar um PC",
+    "descricao": "Personalizar e montar o computador dos seus sonhos.",
+    "servicos": [
+      "Montagem de PCs"
+    ]
+  },
+  {
+    "nome": "Gerenciar redes sociais",
+    "descricao": "Ajudar a criar e manter suas redes sociais.",
+    "servicos": [
+      "Marketing Strategy",
+      "Web Design"
+    ]
+  },
+  {
+    "nome": "Criar um e-commerce",
+    "descricao": "Desenvolver uma loja virtual completa.",
+    "servicos": [
+      "Web Design",
+      "SEO Optimization"
+    ]
+  },
+  {
+    "nome": "Apoio técnico remoto",
+    "descricao": "Fornecer suporte técnico via remoto.",
+    "servicos": [
+      "Suporte T.I",
+      "Manutenção de sites"
+    ]
+  }
+]
